@@ -1,1 +1,3 @@
 Rails 3.1 App for uploading and parsing Excel spreadsheets
+
+The loaded excel Document can be found under ROOT/public/contacts.xls

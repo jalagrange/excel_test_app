@@ -95,7 +95,9 @@ class PeopleController < ApplicationController
     test_file = params[:excel_file]
     @name = test_file.original_filename
     file = FileUploader.new
-    file.store!(test_file)
+    if file.store!(test_file)
+      render action: "process_excel_file"
+    end
      
   end
   
@@ -103,7 +105,7 @@ class PeopleController < ApplicationController
     test_file = params[:excel_file]
     file = FileUploader.new
     file.store!(test_file)
-    book = Spreadsheet.open "public/#{file.store_path}"
+    book = Spreadsheet.open "#{file.store_path}"
     sheet1 = book.worksheet 0
     @people = []
     sheet1.each 1 do |row|

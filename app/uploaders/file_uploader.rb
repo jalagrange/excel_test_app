@@ -18,7 +18,7 @@ class FileUploader < CarrierWave::Uploader::Base
 
 
   def store_dir
-    "excel_uploaded_files/"
+    "#{::Rails.root.to_s}/public/excel_uploaded_files/"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
