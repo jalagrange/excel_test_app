@@ -1,0 +1,21 @@
+<h1>Success</h1>
+
+<table>
+  <tr>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Age</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @people.each do |person| %>
+  <tr>
+    <td><%= person.first_name %></td>
+    <td><%= person.last_name %></td>
+    <td><%= person.age %></td>
+    
+  </tr>
+<% end %>
+</table>

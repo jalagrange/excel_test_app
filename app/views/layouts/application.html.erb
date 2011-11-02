@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ExcelTestApp</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= link_to "load_from_excel", load_from_excel_people_path%> |
+<%= link_to "upload", upload_people_path%> |
+<%= link_to "people", people_path%>
+
+
+<%= yield %>
+
+</body>
+</html>
