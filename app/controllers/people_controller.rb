@@ -80,15 +80,19 @@ class PeopleController < ApplicationController
       format.json { head :ok }
     end
   end
-  
+
   def load_from_excel
-    
+
   end
-  
+
   def upload
-    
+
   end
   
+  def save_many_people
+    
+  end
+
   def store_excel_file
     #raise params.to_yaml
     #binding.pry
@@ -98,9 +102,9 @@ class PeopleController < ApplicationController
     if file.store!(test_file)
       render action: "process_excel_file"
     end
-     
+
   end
-  
+
   def parse_save_from_excel
     test_file = params[:excel_file]
     file = FileUploader.new
@@ -109,13 +113,39 @@ class PeopleController < ApplicationController
     sheet1 = book.worksheet 0
     @people = []
     sheet1.each 1 do |row|
-        p = Person.new
-        p.first_name = row[0]
-        p.last_name = row[1]
-        p.age = row[2]
+      p = Person.new
+      p.first_name = row[0]
+      p.last_name = row[1]
+      p.age = row[2]
+      @people << p
+    end
+    file.remove!
+  end
+
+  def upload_and_validate
+    test_file = params[:excel_file]
+    file = FileUploader.new
+    file.store!(test_file)
+    book = Spreadsheet.open "#{file.store_path}"
+    sheet1 = book.worksheet 0
+    @people = []
+    @errors = Hash.new
+    @counter = 0
+    sheet1.each 1 do |row|
+      @counter+=1
+      p = Person.new
+      p.first_name = row[0]
+      p.last_name = row[1]
+      p.age = row[2]
+      if p.valid?
         @people << p
+      else
+        @errors["#{@counter+1}"] = p.errors
       end
-      file.remove!
+    end
+    file.remove!
   end
   
+  
+
 end

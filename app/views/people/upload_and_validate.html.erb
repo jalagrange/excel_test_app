@@ -1,0 +1,36 @@
+
+<% unless @errors.empty? %>
+<h1>Failure</h1>
+				<ul>
+					<% @errors.each do |error| %>
+					<li>
+						Problems in line number <%= error[0] %>:
+						<% error[1].full_messages.each do |msg|%>
+						<p><%= msg %> </p>
+						<%end%>
+					</li>
+							
+				<% end %>
+				</ul>
+<%else%>
+<h1>Success</h1>
+<% end %>
+<table>
+  <tr>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Age</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @people.each do |person| %>
+  <tr>
+    <td><%= person.first_name %></td>
+    <td><%= person.last_name %></td>
+    <td><%= person.age %></td>
+    
+  </tr>
+<% end %>
+</table>

@@ -1,0 +1,17 @@
+<% if target.errors.any? %>
+	<div class="ui-widget">
+		<div style="margin-top: 20px; padding: 0pt 0.7em; margin-bottom: 20px;" class="ui-state-error ui-corner-all"> 
+			<p><span style="float: left; margin-right: 0.3em;" class="ui-icon ui-icon-alert"></span>
+				<strong><%= t("activerecord.errors.template.body")%></strong> <br />
+				<ul>
+					<% target.errors.full_messages.each do |msg| %>
+					<li>
+					<p><%= msg %> </p>
+					</li>
+				<% end %>
+				</ul>
+				</p>
+				
+		</div>
+	</div>
+<% end %>

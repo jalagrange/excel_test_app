@@ -1,0 +1,12 @@
+
+<h1> Choose Upload file</h1>
+<h2>Uploads, Parses, validates and stores the people in DB</h2>
+<%=form_tag('/people/upload_and_validate', :multipart => true) %>
+
+<p>
+<%= file_field_tag 'excel_file' %>
+</p>
+<p>
+<%= submit_tag "Process this file" %>
+</p>
+</form>
