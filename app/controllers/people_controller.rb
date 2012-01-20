@@ -131,6 +131,7 @@ class PeopleController < ApplicationController
     @people = []
     @errors = Hash.new
     @counter = 0
+    
     sheet1.each 1 do |row|
       @counter+=1
       p = Person.new
@@ -146,6 +147,50 @@ class PeopleController < ApplicationController
     file.remove!
   end
   
+  def upload_select_column
+    first_name  = params[:name].to_i
+    last_name = params[:last_name].to_i
+    age = params[:age].to_i
+    book = nil
+    open "https://s3.amazonaws.com/media.akdemia.com/uploads/tmp/definitive_eduplin.xls" do |f|
+      book = Spreadsheet.open f
+    end
+    sheet1 = book.worksheet 0
+    @people = []
+    @errors = Hash.new
+    @counter = 0
+    sheet1.each 1 do |row|
+      @counter+=1
+      p = Person.new
+      p.first_name = row[first_name]
+      p.last_name = row[last_name]
+      p.age = row[age]
+      if p.valid?
+        @people << p
+        p.save
+      else
+        @errors["#{@counter+1}"] = p.errors
+      end
+    end
+  end
   
+  def load_from_excel_select_column
+    
+  end
+  
+  def parse_save_from_excel_select_column
+
+      book = nil
+      open "https://s3.amazonaws.com/media.akdemia.com/uploads/tmp/definitive_eduplin.xls" do |f|
+        book = Spreadsheet.open f
+      end
+    sheet1 = book.worksheet 0
+    @title_columns = []
+     num_column = 0
+     sheet1.first.each do |row|
+       @title_columns << [row, num_column]
+       num_column = num_column + 1
+     end
+  end
 
 end

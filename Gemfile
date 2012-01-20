@@ -35,3 +35,10 @@ group :test do
   # Pretty printed test output
   gem 'turn', :require => false
 end
+
+
+group :development, :test do
+  gem "mysql2", "0.3.6"
+  gem "letter_opener"
+  gem "pry"
+end

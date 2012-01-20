@@ -1,0 +1,14 @@
+
+<h1> Choose Upload file  (Select Columns)</h1>
+<h2>Uploads, saves, parses, process the file then deletes it</h2>
+<%=form_tag('/people/parse_save_from_excel_select_column', :multipart => true) %>
+
+<p>
+<%= file_field_tag 'file_upload' %>
+</p>
+<p>
+<%= submit_tag "Process this file" %>
+</p>
+</form>
+
+
