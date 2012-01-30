@@ -89,6 +89,10 @@ class PeopleController < ApplicationController
 
   end
   
+  def upload_ajax
+
+  end
+   
   def save_many_people
     
   end
@@ -105,6 +109,19 @@ class PeopleController < ApplicationController
 
   end
 
+
+  def store_excel_file_ajax
+    #raise params.to_yaml
+    #binding.pry
+    test_file = params[:excel_file]
+    @name = test_file.original_filename
+    file = FileUploader.new
+    if file.store!(test_file)
+      render action: "process_excel_file"
+    end
+
+  end
+  
   def parse_save_from_excel
     test_file = params[:excel_file]
     file = FileUploader.new

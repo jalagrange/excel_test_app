@@ -9,8 +9,10 @@ gem 'sqlite3'
 gem "spreadsheet"
 gem "carrierwave"
 gem "mini_magick"
+gem 'flash_cookie_session'
 gem "pry"
-
+gem "haml"
+gem 'fog'
 
 # Gems used only for assets and not required
 # in production environments by default.
