@@ -1,6 +1,4 @@
 class PhotosController < ApplicationController
-  before_filter :find_or_build_photo, :except => [:index]
-  
   
 def show
 end
@@ -24,7 +22,15 @@ def create
 end
 
 def hola
-  binding.pry
+  @photo = Photo.new(params[:photo])
+   if @photo.save
+     respond_to do |format|
+       format.html { redirect_to [@photo], :notice => 'Photo successfully created' }
+       format.js
+     end
+   else
+     render :new
+   end
 end
 
 
