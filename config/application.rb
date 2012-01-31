@@ -18,7 +18,7 @@ module ExcelTestApp
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
 
-    %w(observers mailers middleware).each do |dir|
+    %w(middleware).each do |dir|
       config.autoload_paths << "#{config.root}/app/#{dir}"
     end
     # Only load the plugins named here, in the order given (default is alphabetical).

@@ -29,7 +29,7 @@ module ApplicationHelper
           uploader        : '/uploadify/uploadify.swf',
           cancelImg       : '/uploadify/cancel.png',
           fileDesc        : 'Images',
-          fileExt         : '*.png;*.jpg;*.gif',
+          fileExt         : '*.png;*.jpg;*.gif;*.xls',
           sizeLimit       : #{10.megabytes},
           queueSizeLimit  : 24,
           multi           : true,
