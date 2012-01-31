@@ -10,15 +10,6 @@ def edit
 end
 
 def create
-      binding.pry
-  if @photo.save
-    respond_to do |format|
-      format.html { redirect_to [@photo], :notice => 'Photo successfully created' }
-      format.js
-    end
-  else
-    render :new
-  end
 end
 
 def hola
