@@ -38,7 +38,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   #  %w(jpg jpeg gif png)
   
   def extension_white_list
-     %w(jpg jpeg gif png xls)
+     %w(jpg jpeg gif png)
    end
    
   # Override the filename of the uploaded files:
