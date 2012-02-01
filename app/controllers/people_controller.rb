@@ -196,7 +196,6 @@ class PeopleController < ApplicationController
   end
   
   def parse_save_from_excel_select_column
-
       book = nil
       open "https://s3.amazonaws.com/media.akdemia.com/uploads/tmp/definitive_eduplin.xls" do |f|
         book = Spreadsheet.open f
