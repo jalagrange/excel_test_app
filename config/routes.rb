@@ -19,6 +19,8 @@ ExcelTestApp::Application.routes.draw do
   
    resources :photos do
      post "hola", :on => :collection
+     post "upload_select_column", :on => :member
    end
+   
    
 end

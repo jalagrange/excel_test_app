@@ -1,13 +1,14 @@
 
 <h1>Success</h1>
 
-<%= form_tag('/people/upload_select_column') %>
+<%= form_for @photo, :url => upload_select_column_photo_path(@photo), :method => :post do |f| %>
+
 <%= label_tag("First Name")%>
 <%=  select_tag("name", options_for_select(@title_columns)) %>
 <%= label_tag("Last Name")%>
 <%=  select_tag("last_name", options_for_select(@title_columns)) %>
 <%= label_tag("Age")%>
 <%=  select_tag("age", options_for_select(@title_columns)) %>
-  <%= submit_tag "Save" %>
+  <%= f.submit "Save" %>
 
-
+<% end %>

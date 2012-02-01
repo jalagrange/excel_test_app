@@ -169,7 +169,7 @@ class PeopleController < ApplicationController
     last_name = params[:last_name].to_i
     age = params[:age].to_i
     book = nil
-    open "https://s3.amazonaws.com/media.akdemia.com/uploads/tmp/definitive_eduplin.xls" do |f|
+    open @photo.image_url do |f|
       book = Spreadsheet.open f
     end
     sheet1 = book.worksheet 0
@@ -196,17 +196,28 @@ class PeopleController < ApplicationController
   end
   
   def parse_save_from_excel_select_column
-      book = nil
-      open "https://s3.amazonaws.com/media.akdemia.com/uploads/tmp/definitive_eduplin.xls" do |f|
-        book = Spreadsheet.open f
+    @photo = Photo.new(params[:photo])
+     if @photo.save
+       book = nil
+       open @photo.image_url do |f|
+         book = Spreadsheet.open f
+       end
+     sheet1 = book.worksheet 0
+     @title_columns = []
+      num_column = 0
+      sheet1.first.each do |row|
+        @title_columns << [row, num_column]
+        num_column = num_column + 1
       end
-    sheet1 = book.worksheet 0
-    @title_columns = []
-     num_column = 0
-     sheet1.first.each do |row|
-       @title_columns << [row, num_column]
-       num_column = num_column + 1
+      
+       respond_to do |format|
+         format.html { redirect_to [@photo], :notice => 'Photo successfully created' }
+         format.js
+       end
+     else
+       render :new 
      end
+      
   end
 
 end
