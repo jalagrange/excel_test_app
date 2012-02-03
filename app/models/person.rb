@@ -3,7 +3,7 @@ class Person < ActiveRecord::Base
   validates_presence_of :first_name, :last_name
 
   def self.delayed_job(name)
-    find_by_first_name("Nakarid")
+    find_by_first_name("Nakarid").delayed_job
   end
 
   def delayed_job
