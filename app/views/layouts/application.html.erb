@@ -13,7 +13,8 @@
 <%= link_to "Upload Many People", save_many_people_people_path %> |
 <%= link_to "people", people_path%> |
 <%= link_to "Load from excel with select column",  load_from_excel_select_column_people_path %> |
-<%= link_to "Upload ajax", upload_ajax_people_path%> 
+<%= link_to "Upload ajax", upload_ajax_people_path%>  |
+<%= link_to "Delayed Job", delayed_job_people_path%>
 
 <% unless flash[:notice].nil? %>    
       <%= flash[:notice] %>

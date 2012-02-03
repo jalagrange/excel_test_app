@@ -45,6 +45,12 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.1.2)
+    daemons (1.1.6)
+    delayed_job (3.0.1)
+      activesupport (~> 3.0)
+    delayed_job_active_record (0.3.2)
+      activerecord (> 2.1.0)
+      delayed_job (~> 3.0.0)
     erubis (2.7.0)
     excon (0.7.6)
     execjs (1.2.9)
@@ -160,6 +166,8 @@ PLATFORMS
 DEPENDENCIES
   carrierwave
   coffee-rails (~> 3.1.0)
+  daemons
+  delayed_job_active_record
   flash_cookie_session
   fog
   haml

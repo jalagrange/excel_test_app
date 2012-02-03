@@ -196,6 +196,7 @@ class PeopleController < ApplicationController
   end
   
   def parse_save_from_excel_select_column
+    
     @photo = Photo.new(params[:photo])
      if @photo.save
        book = nil
@@ -220,4 +221,9 @@ class PeopleController < ApplicationController
       
   end
 
+  def delayed_job
+    Person.delay(priority: 28).delayed_job("Nakarid")
+    redirect_to upload_people_path(), notice: "Delivering newsletter."
+  end
+  
 end
